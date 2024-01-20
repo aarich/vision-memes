@@ -4,14 +4,14 @@
 	import ControllerSlider from './ControllerSlider.svelte';
 
 	export let asset: Asset;
-	$: label = asset.label;
+	$: label = asset?.label;
 </script>
 
 <h2>{label}</h2>
 
-{#each asset.settings as control (control.setting.label)}
+{#each asset.settings as control (control.setting?.label)}
 	<span>
-		{control.setting.label}
+		{control.setting?.label}
 
 		{#if control.isSlider()}
 			<ControllerSlider {control} />

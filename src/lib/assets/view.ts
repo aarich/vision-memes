@@ -1,4 +1,4 @@
-import { AmbientLight, PerspectiveCamera, Scene, WebGLRenderer, type Renderer, Camera } from "three";
+import { AmbientLight, PerspectiveCamera, Scene, WebGLRenderer, type Renderer, Camera, AxesHelper } from "three";
 import { UserImage } from "./image";
 import { DragControls } from 'three/addons/controls/DragControls.js';
 import type { Asset } from "./types";
@@ -9,7 +9,7 @@ export class View {
     renderer: Renderer;
     camera: Camera;
 
-    static create(parentElement: HTMLElement, width = window.innerWidth, height = window.innerHeight) {
+    static create(parentElement: HTMLElement, width = window.innerWidth / 2, height = window.innerHeight / 2) {
         const scene = new Scene();
         const camera = new PerspectiveCamera(75, width / height, 0.1, 1000);
         const renderer = new WebGLRenderer({ antialias: true });
@@ -19,7 +19,15 @@ export class View {
         const light = new AmbientLight(0xffffff, 0.5);
         scene.add(light);
 
-        // camera.position.z = 5;
+        const axesHelper = new AxesHelper(5);
+        scene.add(axesHelper);
+
+
+        // camera.position.set(0, 0, 0);
+        // camera.lookAt(1, 1, 1)
+
+        renderer.render(scene, camera)
+
 
         // const dragControls = new DragControls([], camera, renderer.domElement);
 

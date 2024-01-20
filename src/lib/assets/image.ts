@@ -1,7 +1,8 @@
-import { PlaneGeometry, type Material, Mesh, MeshBasicMaterial, TextureLoader, Scene } from "three";
+import { PlaneGeometry, type Material, Mesh, MeshBasicMaterial, TextureLoader, Scene, Vector3, Matrix4 } from "three";
 import { DISTANCE, createInitialSettings } from "./configuration";
 import type { Asset, ControlBehavior } from "./types";
-import { clamp } from "three/src/math/MathUtils.js";
+import { clamp, degToRad } from "three/src/math/MathUtils.js";
+
 
 export class UserImage implements Asset {
     private _mesh: Mesh;
@@ -46,6 +47,18 @@ export class UserImage implements Asset {
 
     setDistance(oldValue: number, newValue: number) {
         this._mesh.position.multiplyScalar(clamp(newValue, 1, DISTANCE.MAX) / clamp(oldValue, 1, DISTANCE.MAX));
+    }
+
+    setSize(oldValue: number, newValue: number) {
+        this._mesh.scale.multiplyScalar(newValue / oldValue)
+    }
+
+    setHorizontalAngle(oldValue: number, newValue: number) {
+        this._mesh.applyMatrix4(new Matrix4().makeRotationY(degToRad(newValue - oldValue)));
+    }
+
+    setVerticalAngle(oldValue: number, newValue: number) {
+        this._mesh.applyMatrix4(new Matrix4().makeRotationX(degToRad(newValue - oldValue)));
     }
 
     private get _material(): Material {

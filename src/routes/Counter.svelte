@@ -2,6 +2,7 @@
 	import { View } from '$lib/assets/view';
 	import AssetCollectionControls from '$lib/components/AssetCollectionControls.svelte';
 	import { onMount } from 'svelte';
+
 	let viewParent: HTMLElement;
 	let fileInput: HTMLInputElement;
 
@@ -19,6 +20,6 @@
 </script>
 
 <div bind:this={viewParent}></div>
-<input type="file" accept="image/*" on:change={handleFileUpload} bind:this={fileInput} />
+<input class="" type="file" accept="image/*" on:change={handleFileUpload} bind:this={fileInput} />
 
 <AssetCollectionControls {assets} />

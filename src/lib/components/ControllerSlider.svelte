@@ -8,7 +8,7 @@
 <input
 	type="range"
 	bind:value={control.value}
-	min="{setting.min},"
+	min={setting.min}
 	max={setting.max}
 	step={(setting.max - setting.min) / 20}
 />

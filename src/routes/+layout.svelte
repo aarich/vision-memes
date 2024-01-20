@@ -10,6 +10,6 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>Check out <a href="https://projects.mrarich.com">more projects</a> by Alex.</p>
 	</footer>
 </div>
