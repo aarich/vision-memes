@@ -41,7 +41,7 @@ export class View {
             .then(() => this.render());
     }
 
-    addImage(file: Blob | MediaSource) {
+    addImage(file: Blob | MediaSource | string) {
         return UserImage.create(file, this.scene, () => this.render())
             .then(i => this.assets.push(i))
             .then(() => this.render())

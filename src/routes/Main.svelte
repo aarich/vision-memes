@@ -21,6 +21,13 @@
 		view?.addImage(file!).then(() => (view = view));
 		fileInput.value = '';
 	};
+
+	const addImageByURL = () => {
+		const url = prompt('Enter a URL to an image');
+		if (url) {
+			view?.addImage(url).then(() => (view = view));
+		}
+	};
 </script>
 
 <div class="my-3" bind:this={viewParent}></div>
@@ -31,6 +38,9 @@
 			<div class="col btn-group">
 				<button type="button" class="btn btn-outline-secondary" on:click={() => fileInput.click()}>
 					Add Image
+				</button>
+				<button type="button" class="btn btn-outline-secondary" on:click={addImageByURL}>
+					Add Image by URL
 				</button>
 
 				<input

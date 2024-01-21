@@ -12,3 +12,5 @@ I saw a bunch of these memes and decided to make a maker. [Try it out!](https://
 npm run dev -- --open
 npm run build
 ```
+
+![example image](https://raw.githubusercontent.com/aarich/vision-memes/master/demo2.png)
