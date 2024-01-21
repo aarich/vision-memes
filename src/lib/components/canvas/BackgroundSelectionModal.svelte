@@ -27,6 +27,13 @@
 						</div>
 					{/each}
 				</div>
+				<p class="mt-2">
+					Have a recommendation? Send it to me on <a href="https://x.com/mr_arich" target="_blank"
+						>Twitter</a
+					>
+					or open a
+					<a href="https://github.com/aarich/vision-memes" target="_blank">pull request</a>!
+				</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

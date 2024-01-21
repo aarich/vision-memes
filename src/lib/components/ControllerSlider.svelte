@@ -2,7 +2,7 @@
 	import type { ControlBehavior, NumberControl } from '$lib/assets/types';
 
 	export let control: ControlBehavior<number>;
-	$: setting = control.setting as NumberControl<'slider'>;
+	$: setting = control.setting as NumberControl;
 </script>
 
 <input

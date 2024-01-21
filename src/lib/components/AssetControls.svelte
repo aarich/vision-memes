@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Asset } from '$lib/assets/types';
+	import ControllerDropdown from './ControllerDropdown.svelte';
 	import ControllerSlider from './ControllerSlider.svelte';
 
 	export let asset: Asset;
@@ -31,6 +32,8 @@
 
 							{#if control.isSlider()}
 								<ControllerSlider {control} />
+							{:else if control.isDropdown()}
+								<ControllerDropdown {control} />
 							{:else if control.isCheckbox()}
 								<input type="checkbox" class="form-check-input" bind:checked={control.value} />
 							{:else if control.isText()}
