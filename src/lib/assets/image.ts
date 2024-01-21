@@ -7,7 +7,8 @@ import { clamp, degToRad } from "three/src/math/MathUtils.js";
 export class UserImage implements Asset {
     private _mesh: Mesh;
     private _settings: ControlBehavior<any>[];
-    label = '';
+    label = 'Image';
+    id: string;
 
     static create(file: Blob | MediaSource, scene: Scene, onRerender: VoidFunction): Promise<UserImage> {
         return new Promise(resolve => {
@@ -15,8 +16,9 @@ export class UserImage implements Asset {
                 const aspectRatio = texture.image.width / texture.image.height;
                 const geometry = new PlaneGeometry(aspectRatio, 1);
                 const material = new MeshBasicMaterial({ map: texture });
+                material.transparent = true;
                 const mesh = new Mesh(geometry, material);
-                mesh.position.set(0, 0, -5)
+                mesh.position.set(0, 0, -3)
                 scene.add(mesh);
                 resolve(new UserImage(mesh, onRerender));
             });
@@ -26,6 +28,7 @@ export class UserImage implements Asset {
     constructor(mesh: Mesh, onRerender: VoidFunction) {
         this._mesh = mesh;
         this._settings = createInitialSettings(this, onRerender);
+        this.id = Date.now() + '';
     }
 
     get settings() {
@@ -37,12 +40,7 @@ export class UserImage implements Asset {
     }
 
     setOpacity(value: number) {
-        if (value === 1) {
-            this._material.transparent = false;
-        } else {
-            this._material.transparent = true;
-            this._material.opacity = value ?? 1;
-        }
+        this._material.opacity = value ?? 1;
     }
 
     setDistance(oldValue: number, newValue: number) {
@@ -50,15 +48,15 @@ export class UserImage implements Asset {
     }
 
     setSize(oldValue: number, newValue: number) {
-        this._mesh.scale.multiplyScalar(newValue / oldValue)
+        this._mesh.geometry.scale(newValue / oldValue, newValue / oldValue, newValue / oldValue)
     }
 
-    setHorizontalAngle(oldValue: number, newValue: number) {
-        this._mesh.applyMatrix4(new Matrix4().makeRotationY(degToRad(newValue - oldValue)));
+    setPosition(oldValue: number, newValue: number, xOrY: 'X' | 'Y') {
+        this._mesh.applyMatrix4(new Matrix4()[`makeRotation${xOrY}`](degToRad(newValue - oldValue)));
     }
 
-    setVerticalAngle(oldValue: number, newValue: number) {
-        this._mesh.applyMatrix4(new Matrix4().makeRotationX(degToRad(newValue - oldValue)));
+    setAngle(oldValue: number, newValue: number, xOrY: 'X' | 'Y') {
+        this._mesh[`rotate${xOrY}`](degToRad(newValue - oldValue))
     }
 
     private get _material(): Material {

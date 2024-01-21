@@ -10,5 +10,5 @@
 	bind:value={control.value}
 	min={setting.min}
 	max={setting.max}
-	step={(setting.max - setting.min) / 20}
+	step={(setting.max - setting.min) / 40}
 />

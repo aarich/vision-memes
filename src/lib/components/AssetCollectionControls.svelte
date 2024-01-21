@@ -5,8 +5,10 @@
 	export let assets: Asset[];
 </script>
 
-<h1>Settings</h1>
-
-{#each assets as asset}
-	<AssetControls {asset} />
-{/each}
+{#if assets.length}
+	<div class="accordion" id="accordion">
+		{#each assets as asset (asset.id)}
+			<AssetControls {asset} />
+		{/each}
+	</div>
+{/if}
