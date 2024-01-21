@@ -1,17 +1,11 @@
 <script>
-	const navItems = [
-		{
-			label: 'Home',
-			url: '/'
-		},
-		{ label: 'More Projects', url: 'https://projects.mrarich.com' }
-	];
+	import { base } from '$app/paths';
 </script>
 
 <header>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/">Vision Memes</a>
+			<a class="navbar-brand" href={`${base}/`}>Vision Memes</a>
 			<button
 				class="navbar-toggler"
 				type="button"
@@ -26,7 +20,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/">Home</a>
+						<a class="nav-link active" aria-current="page" href={`${base}/`}>Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="https://projects.mrarich.com">More Projects</a>

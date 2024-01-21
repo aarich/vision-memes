@@ -1,4 +1,4 @@
-import { PlaneGeometry, type Material, Mesh, MeshBasicMaterial, TextureLoader, Scene, Vector3, Matrix4 } from "three";
+import { PlaneGeometry, type Material, Mesh, MeshBasicMaterial, TextureLoader, Scene, Matrix4 } from "three";
 import { DISTANCE, createInitialSettings } from "./configuration";
 import type { Asset, ControlBehavior } from "./types";
 import { clamp, degToRad } from "three/src/math/MathUtils.js";

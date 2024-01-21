@@ -1,4 +1,4 @@
-import { AmbientLight, PerspectiveCamera, Scene, WebGLRenderer, type Renderer, Camera, AxesHelper, LinearFilter, TextureLoader } from "three";
+import { PerspectiveCamera, Scene, WebGLRenderer, type Renderer, LinearFilter, TextureLoader } from "three";
 import { UserImage } from "./image";
 import type { Asset } from "./types";
 import { UserText } from "./text";
@@ -16,11 +16,6 @@ export class View {
         const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
         renderer.setSize(width, height);
         parentElement.appendChild(renderer.domElement);
-
-        // const light = new AmbientLight(0xffffff, 0.5);
-        // scene.add(light);
-
-        // const dragControls = new DragControls([], camera, renderer.domElement);
 
         const view = new View(scene, renderer, camera);
 
