@@ -86,4 +86,10 @@ export class View {
 
 		link.click();
 	}
+
+	onDelete(asset: Asset) {
+		this.scene.remove(asset.mesh);
+		this.assets = this.assets.filter(a => a !== asset);
+		this.render();
+	}
 }

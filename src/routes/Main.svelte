@@ -30,7 +30,13 @@
 	};
 </script>
 
-<div class="my-3" bind:this={viewParent}></div>
+<div class="d-md-none container">
+	<div class="alert alert-warning" role="alert">
+		Heads up! This tool is best experienced on a computer.
+	</div>
+</div>
+
+<div class="my-3 text-center w-auto" bind:this={viewParent}></div>
 
 <div class="container">
 	<div class="mb-3">
@@ -79,5 +85,7 @@
 		<BackgroundSelectionModal onSelect={(newImage) => view?.setBackground(newImage)} />
 	</div>
 
-	<AssetCollectionControls {assets} />
+	{#if view}
+		<AssetCollectionControls {view} />
+	{/if}
 </div>

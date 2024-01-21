@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Apple Vision Pro Meme Generator | mrarich.com</title>
 	<meta name="description" content="Vision Memes" />
 </svelte:head>
 

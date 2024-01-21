@@ -95,4 +95,5 @@ export class ControlBehaviorImpl<T = never> implements ControlBehavior<T> {
 	isCheckbox = () => this.setting.type === 'checkbox';
 	isText = () => this.setting.type === 'text';
 	isDropdown = () => this.setting.type === 'dropdown';
+	isLabelForText = () => this.setting === CONTROLS.LABEL && this._asset.isText();
 }

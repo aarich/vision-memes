@@ -11,4 +11,5 @@
 	min={setting.min}
 	max={setting.max}
 	step={(setting.max - setting.min) / 40}
+	class="form-range"
 />

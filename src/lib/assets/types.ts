@@ -1,3 +1,5 @@
+import type { Mesh } from "three";
+
 export interface ControlBehavior<T = never> {
 	setting: Control;
 	value: T;
@@ -5,6 +7,7 @@ export interface ControlBehavior<T = never> {
 	isCheckbox(): this is ControlBehavior<boolean>;
 	isText(): this is ControlBehavior<string>;
 	isDropdown(): this is ControlBehavior<string>;
+	isLabelForText(): this is ControlBehavior<string>;
 }
 
 export type XY = 'X' | 'Y';
@@ -16,9 +19,11 @@ export interface Asset {
 	setSize(oldValue: number, newValue: number): void;
 	setPosition(oldValue: number, newValue: number, xOrY: XY): void;
 	setAngle(oldValue: number, newValue: number, xOrY: XY): void;
+	isText(): boolean,
 	settings: ControlBehavior<any>[];
 	label: string;
 	id: string;
+	mesh: Mesh;
 }
 
 export interface Control {
