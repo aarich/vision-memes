@@ -41,3 +41,12 @@
 		</div>
 	</div>
 </div>
+
+<button
+	type="button"
+	class="btn btn-outline-secondary"
+	data-bs-toggle="modal"
+	data-bs-target="#bgSelect"
+>
+	Select Background
+</button>

@@ -2,6 +2,7 @@
 	import { View } from '$lib/assets/view';
 	import AssetCollectionControls from '$lib/components/AssetCollectionControls.svelte';
 	import HelpModal from '$lib/components/HelpModal.svelte';
+	import SamplesModal from '$lib/components/SamplesModal.svelte';
 	import BackgroundSelectionModal from '$lib/components/canvas/BackgroundSelectionModal.svelte';
 	import SaveCanvasButton from '$lib/components/canvas/SaveCanvasButton.svelte';
 	import { onMount } from 'svelte';
@@ -64,25 +65,14 @@
 				>
 					Add Text
 				</button>
-				<button
-					type="button"
-					class="btn btn-outline-secondary"
-					data-bs-toggle="modal"
-					data-bs-target="#bgSelect"
-				>
-					Choose a background
-				</button>
+				<BackgroundSelectionModal onSelect={(newImage) => view?.setBackground(newImage)} />
 			</div>
-
-			<div class="col">
+			<div class="col btn-group">
+				<SamplesModal />
 				<HelpModal />
-			</div>
-			<div class="col">
 				<SaveCanvasButton {view} />
 			</div>
 		</div>
-
-		<BackgroundSelectionModal onSelect={(newImage) => view?.setBackground(newImage)} />
 	</div>
 
 	{#if view}

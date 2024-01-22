@@ -2,6 +2,8 @@
 	import Header from './Header.svelte';
 	import github from '$lib/images/github.svg';
 	import x from '$lib/images/x.svg';
+
+	$: showPrivacy = false;
 </script>
 
 <div>
@@ -24,6 +26,24 @@
 			<a href="https://x.com/mr_arich" target="_blank">
 				<img style="height: 1.6em;" class="img-fluid" src={x} alt="twitter" />
 			</a>
+			&#x2022;
+			<span class="align-middle">
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+				<span on:mouseover={() => (showPrivacy = true)} on:mouseout={() => (showPrivacy = false)}>
+					Privacy
+				</span>
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+				<span
+					style="position: absolute; padding-top: 0.25em;"
+					on:mouseover={() => (showPrivacy = true)}
+					on:mouseout={() => (showPrivacy = false)}
+					class={`${showPrivacy ? '' : 'd-none'} align-middle`}
+				>
+					: I don't store or collect anything
+				</span>
+			</span>
 		</p>
 	</footer>
 </div>

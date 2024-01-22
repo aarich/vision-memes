@@ -6,4 +6,4 @@
 	$: clazz = `btn btn-outline-${assets?.length ? 'primary' : 'secondary'}`;
 </script>
 
-<button type="button" class={clazz} on:click={() => view?.downloadImage()}> Download! </button>
+<button type="button" class={clazz} on:click={() => view?.downloadImage()}>Download</button>

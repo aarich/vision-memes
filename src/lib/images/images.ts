@@ -1,5 +1,6 @@
 import { base } from '$app/paths';
 export const IMAGES = [
+    '0.png',
     '2.webp',
     '15.jpg',
     '12.jpg',
