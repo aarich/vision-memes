@@ -9,12 +9,17 @@
 
 	let viewParent: HTMLElement;
 	let fileInput: HTMLInputElement;
+	let ctrlsGroup: HTMLDivElement;
 
 	$: view = undefined as View | undefined;
-	$: assets = view?.assets ?? [];
 
 	onMount(() => {
-		view = View.create(viewParent);
+		View.create(viewParent).then((createdView) => {
+			view = createdView;
+
+			// enable controls
+			ctrlsGroup.classList.remove('d-none');
+		});
 	});
 
 	const handleFileUpload = () => {
@@ -37,12 +42,16 @@
 	</div>
 </div>
 
-<div class="my-3 text-center w-auto" bind:this={viewParent}></div>
+<div class="my-3 text-center w-auto" bind:this={viewParent}>
+	<div class="spinner-border m-5" role="status">
+		<span class="visually-hidden">Loading...</span>
+	</div>
+</div>
 
 <div class="container">
 	<div class="mb-3">
 		<div class="row row-cols-auto gx-3">
-			<div class="col btn-group">
+			<div class="col btn-group d-none" bind:this={ctrlsGroup}>
 				<button type="button" class="btn btn-outline-secondary" on:click={() => fileInput.click()}>
 					Add Image
 				</button>

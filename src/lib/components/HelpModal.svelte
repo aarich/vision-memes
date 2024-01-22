@@ -18,9 +18,9 @@
 				<p><strong>Vision memes are hilarious.</strong></p>
 				<ol>
 					<li>Select the background image you like</li>
-					<li>Add some images or text to the image</li>
-					<li>Move them around 'til it looks great</li>
-					<li>Click "Download" to export the image!</li>
+					<li>Add some images or text to the scene</li>
+					<li>Move them around 'til everything looks great</li>
+					<li>Click "Download" to export your creation</li>
 				</ol>
 			</div>
 			<div class="modal-footer">

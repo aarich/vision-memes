@@ -26,13 +26,13 @@ export class View {
 		const camera = new PerspectiveCamera(75, width / height, 0.1, 1000);
 		const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
 		renderer.setSize(width, height);
+
+		parentElement.innerHTML = '';
 		parentElement.appendChild(renderer.domElement);
 
 		const view = new View(scene, renderer, camera);
 
-		view.setBackground(IMAGES[0]);
-
-		return view;
+		return view.setBackground(IMAGES[0]).then(() => view);
 	}
 
 	constructor(scene: Scene, renderer: Renderer, camera: PerspectiveCamera) {
@@ -59,20 +59,26 @@ export class View {
 	}
 
 	setBackground(url: string) {
-		var bgTexture = new TextureLoader().load(url, (texture) => {
-			const img = texture.image;
-			const bgWidth = img.width;
-			const bgHeight = img.height;
+		return new Promise<void>(resolve => {
+			new TextureLoader().load(url, (texture) => {
+				texture.minFilter = LinearFilter;
 
-			var aspect = bgWidth / bgHeight;
+				const img = texture.image;
+				const bgWidth = img.width;
+				const bgHeight = img.height;
 
-			this.renderer.setSize(bgWidth, bgHeight);
-			this.camera.aspect = aspect;
-			this.camera.updateProjectionMatrix();
-			this.render();
+				var aspect = bgWidth / bgHeight;
+
+				this.renderer.setSize(bgWidth, bgHeight);
+				this.camera.aspect = aspect;
+				this.camera.updateProjectionMatrix();
+				this.scene.background = texture;
+				this.render();
+
+				resolve();
+			});
+
 		});
-		bgTexture.minFilter = LinearFilter;
-		this.scene.background = bgTexture;
 	}
 
 	downloadImage() {
