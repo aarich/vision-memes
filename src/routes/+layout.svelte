@@ -2,6 +2,7 @@
 	import Header from './Header.svelte';
 	import github from '$lib/images/github.svg';
 	import x from '$lib/images/x.svg';
+	import { URLS } from '$lib/constants';
 
 	$: showPrivacy = false;
 </script>
@@ -20,10 +21,10 @@
 		<p class="pt-3 text-muted align-middle">
 			by <a href="https://mrarich.com/about" target="_blank">Alex</a>
 			&#x2022;
-			<a href="https://github.com/aarich/vision-memes" target="_blank">
+			<a href={URLS.GH} target="_blank">
 				<img style="height: 2em;" class="img-fluid" src={github} alt="github" />
 			</a>
-			<a href="https://x.com/mr_arich" target="_blank">
+			<a href={URLS.X} target="_blank">
 				<img style="height: 1.6em;" class="img-fluid" src={x} alt="twitter" />
 			</a>
 			&#x2022;

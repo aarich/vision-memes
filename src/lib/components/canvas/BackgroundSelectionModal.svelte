@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { URLS } from '$lib/constants';
 	import { IMAGES } from '$lib/images/images';
 
 	export let onSelect: (url: string) => void;
@@ -28,11 +29,10 @@
 					{/each}
 				</div>
 				<p class="mt-2">
-					Have a recommendation? Send it to me on <a href="https://x.com/mr_arich" target="_blank"
-						>Twitter</a
-					>
-					or open a
-					<a href="https://github.com/aarich/vision-memes" target="_blank">pull request</a>!
+					Have a recommendation?
+					<a href={URLS.X} target="_blank">Send it to me</a>
+					or
+					<a href={URLS.GH} target="_blank">open a pull request</a>!
 				</p>
 			</div>
 			<div class="modal-footer">

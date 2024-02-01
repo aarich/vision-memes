@@ -36,7 +36,8 @@ export abstract class BaseAsset implements Asset {
     }
 
     setSize(oldValue: number, newValue: number) {
-        this.mesh.scale.multiplyScalar(newValue / oldValue);
+        const scale = newValue / oldValue;
+        this.mesh.geometry.scale(scale, scale, scale);
     }
 
     setPosition(oldValue: number, newValue: number, xOrY: 'X' | 'Y') {

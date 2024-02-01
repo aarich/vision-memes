@@ -25,8 +25,8 @@ export const CONTROLS = {
 	SIZE: { type: 'number', min: 1, max: 21, label: 'Size' },
 	H_POS: { type: 'number', min: -40, max: 40, label: 'Horizontal Position' },
 	V_POS: { type: 'number', min: -40, max: 40, label: 'Vertical Position' },
-	H_ANGLE: { type: 'number', min: -80, max: 80, label: 'Horizontal Angle' },
-	V_ANGLE: { type: 'number', min: -80, max: 80, label: 'Vertical Angle' },
+	H_ANGLE: { type: 'number', min: -180, max: 180, label: 'Horizontal Angle' },
+	V_ANGLE: { type: 'number', min: -180, max: 180, label: 'Vertical Angle' },
 	COLOR: { type: 'dropdown', options: COLOR_OPTIONS, label: 'Color' }
 } as const;
 
@@ -52,7 +52,7 @@ export const createInitialSettings = (asset: Asset, onRerender: VoidFunction) =>
 			(a, v, prevValue) => a.setDistance(prevValue, v),
 			(DISTANCE.MAX + DISTANCE.MIN) / 2
 		),
-		// create('SIZE', (a, v, prevValue) => a.setSize(prevValue, v), 11),
+		create('SIZE', (a, v, prevValue) => a.setSize(prevValue, v), 11),
 		create('H_POS', (a, v, prevValue) => a.setPosition(v, prevValue, 'Y'), 0), // backward to make the slider happy
 		create('V_POS', (a, v, prevValue) => a.setPosition(prevValue, v, 'X'), 0),
 		create('H_ANGLE', (a, v, prevValue) => a.setAngle(prevValue, v, 'Y'), 0),

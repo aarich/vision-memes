@@ -10,6 +10,6 @@
 	bind:value={control.value}
 	min={setting.min}
 	max={setting.max}
-	step={(setting.max - setting.min) / 40}
+	step={(setting.max - setting.min) / 100}
 	class="form-range"
 />

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { URLS } from '$lib/constants';
+
 	const postInfos = [
 		{
 			url: 'https://twitter.com/mr_arich/status/1749150388421644587?ref_src=twsrc%5Etfw',
@@ -63,9 +65,10 @@
 					{/each}
 				</div>
 				<p class="mt-2">
-					Got one to add? <a href="https://x.com/mr_arich" target="_blank">Send it to me</a>
-					or open a
-					<a href="https://github.com/aarich/vision-memes" target="_blank">pull request</a>!
+					Got one to add?
+					<a href={URLS.X} target="_blank">Send it to me</a>
+					or
+					<a href={URLS.GH} target="_blank">open a pull request</a>!
 				</p>
 			</div>
 			<div class="modal-footer">

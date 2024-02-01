@@ -3,7 +3,8 @@ import {
 	Mesh,
 	MeshBasicMaterial,
 	TextureLoader,
-	Scene
+	Scene,
+	DoubleSide
 } from 'three';
 import { BaseAsset } from './baseAsset';
 
@@ -61,6 +62,7 @@ export class UserImage extends BaseAsset {
 						const material = new MeshBasicMaterial({ map: texture });
 						material.transparent = true;
 						material.opacity = 0.7;
+						material.side = DoubleSide;
 						const mesh = new Mesh(geometry, material);
 						mesh.position.set(0, 0, -3);
 						scene.add(mesh);
