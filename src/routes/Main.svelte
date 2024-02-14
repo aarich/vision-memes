@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { View } from '$lib/assets/view';
 	import AssetCollectionControls from '$lib/components/AssetCollectionControls.svelte';
+	import FileInput from '$lib/components/FileInput.svelte';
 	import HelpModal from '$lib/components/HelpModal.svelte';
 	import SamplesModal from '$lib/components/SamplesModal.svelte';
 	import BackgroundSelectionModal from '$lib/components/canvas/BackgroundSelectionModal.svelte';
@@ -22,11 +23,7 @@
 		});
 	});
 
-	const handleFileUpload = () => {
-		const file = fileInput.files?.[0];
-		view?.addImage(file!).then(() => (view = view));
-		fileInput.value = '';
-	};
+	const handleFileUpload = (file: File) => view?.addImage(file!).then(() => (view = view));
 
 	const addImageByURL = () => {
 		const url = prompt('Enter a URL to an image');
@@ -52,21 +49,10 @@
 	<div class="mb-3">
 		<div class="row row-cols-auto gx-3">
 			<div class="col btn-group d-none" bind:this={ctrlsGroup}>
-				<button type="button" class="btn btn-outline-secondary" on:click={() => fileInput.click()}>
-					Add Image
-				</button>
+				<FileInput label="Add Image" onLoadFile={handleFileUpload} />
 				<button type="button" class="btn btn-outline-secondary" on:click={addImageByURL}>
 					Add Image by URL
 				</button>
-
-				<input
-					class="d-none"
-					type="file"
-					id="formFile"
-					accept="image/*"
-					on:change={handleFileUpload}
-					bind:this={fileInput}
-				/>
 				<button
 					type="button"
 					class="btn btn-outline-secondary"

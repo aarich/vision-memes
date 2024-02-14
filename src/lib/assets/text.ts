@@ -45,6 +45,10 @@ export class UserText extends BaseAsset {
         return this.text;
     }
 
+    setSize(oldValue: number, newValue: number): void {
+        this.text.fontSize *= newValue / oldValue;
+    }
+
     setColor(color: string) {
         this.text.color = color;
     }

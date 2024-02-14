@@ -1,11 +1,25 @@
-<script>
+<script lang="ts">
 	import Header from './Header.svelte';
 	import github from '$lib/images/github.svg';
 	import x from '$lib/images/x.svg';
 	import { URLS } from '$lib/constants';
+	import type { EventHandler } from 'svelte/elements';
 
 	$: showPrivacy = false;
+
+	const handleError: EventHandler = (e) => {
+		if (e instanceof ErrorEvent) {
+			const error = e.error as Error;
+			prompt(
+				`Something went wrong :(\n\n${e.message}\n\nIf you care to, please file a GitHub issue. The stacktrace can be copied below. Thanks!`,
+				JSON.stringify(error.stack)
+			);
+			console.log({ e });
+		}
+	};
 </script>
+
+<svelte:window on:error={handleError} />
 
 <div>
 	<Header />

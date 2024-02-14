@@ -58,8 +58,15 @@ export class View {
 			.then(() => this.render());
 	}
 
-	setBackground(url: string) {
+	setBackground(background: File | string) {
 		return new Promise<void>(resolve => {
+			let url: string;
+			if (typeof background === 'string') {
+				url = background
+			} else {
+				url = URL.createObjectURL(background);
+			}
+
 			new TextureLoader().load(url, (texture) => {
 				texture.minFilter = LinearFilter;
 
