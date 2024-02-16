@@ -16,12 +16,11 @@ export class View {
 	scene: Scene;
 	renderer: Renderer;
 	camera: PerspectiveCamera;
+	width: number;
 
-	static create(
-		parentElement: HTMLElement,
-		width = window.innerWidth / 2,
-		height = window.innerHeight / 2
-	) {
+	static create(parentElement: HTMLElement) {
+		const bounds = parentElement.getBoundingClientRect();
+		const { width, height } = bounds;
 		const scene = new Scene();
 		const camera = new PerspectiveCamera(75, width / height, 0.1, 1000);
 		const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
@@ -30,16 +29,17 @@ export class View {
 		parentElement.innerHTML = '';
 		parentElement.appendChild(renderer.domElement);
 
-		const view = new View(scene, renderer, camera);
+		const view = new View(scene, renderer, camera, width);
 
 		return view.setBackground(IMAGES[0]).then(() => view);
 	}
 
-	constructor(scene: Scene, renderer: Renderer, camera: PerspectiveCamera) {
+	constructor(scene: Scene, renderer: Renderer, camera: PerspectiveCamera, width: number) {
 		this.assets = [];
 		this.scene = scene;
 		this.renderer = renderer;
 		this.camera = camera;
+		this.width = width
 	}
 
 	render() {
@@ -68,15 +68,14 @@ export class View {
 			}
 
 			new TextureLoader().load(url, (texture) => {
-				texture.minFilter = LinearFilter;
 
 				const img = texture.image;
 				const bgWidth = img.width;
 				const bgHeight = img.height;
 
-				var aspect = bgWidth / bgHeight;
+				const aspect = bgWidth / bgHeight;
 
-				this.renderer.setSize(bgWidth, bgHeight);
+				this.renderer.setSize(this.width, this.width / aspect);
 				this.camera.aspect = aspect;
 				this.camera.updateProjectionMatrix();
 				this.scene.background = texture;

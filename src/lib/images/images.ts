@@ -15,5 +15,6 @@ export const IMAGES = [
     '8.avif',
     '11.jpg',
     '13.webp',
-    '14.jpg'
+    '14.jpg',
+    '16.jpg',
 ].map((item) => `${base}/images/${item}`);

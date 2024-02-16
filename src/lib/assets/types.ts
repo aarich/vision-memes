@@ -21,6 +21,7 @@ export interface Asset {
 	setAngle(oldValue: number, newValue: number, xOrY: XY): void;
 	isText(): boolean,
 	settings: ControlBehavior<any>[];
+	settingsGroups: ControlBehavior<any>[][];
 	label: string;
 	id: string;
 	mesh: Mesh;

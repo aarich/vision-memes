@@ -22,11 +22,11 @@ export const CONTROLS = {
 	VISIBLE: { type: 'checkbox', label: 'Visible' },
 	LABEL: { type: 'text', label: 'Label' },
 	DISTANCE: { type: 'number', min: DISTANCE.MIN, max: DISTANCE.MAX, label: 'Distance' },
-	SIZE: { type: 'number', min: 1, max: 21, label: 'Size' },
-	H_POS: { type: 'number', min: -40, max: 40, label: 'Horizontal Position' },
-	V_POS: { type: 'number', min: -40, max: 40, label: 'Vertical Position' },
-	H_ANGLE: { type: 'number', min: -180, max: 180, label: 'Horizontal Angle' },
-	V_ANGLE: { type: 'number', min: -180, max: 180, label: 'Vertical Angle' },
+	SIZE: { type: 'number', min: 1, max: 121, label: 'Size' },
+	H_POS: { type: 'number', min: -40, max: 40, label: 'X Position' },
+	V_POS: { type: 'number', min: -40, max: 40, label: 'Y Position' },
+	H_ANGLE: { type: 'number', min: -180, max: 180, label: 'X Angle' },
+	V_ANGLE: { type: 'number', min: -180, max: 180, label: 'Y Angle' },
 	COLOR: { type: 'dropdown', options: COLOR_OPTIONS, label: 'Color' }
 } as const;
 

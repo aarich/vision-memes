@@ -21,6 +21,23 @@ export abstract class BaseAsset implements Asset {
         return this._settings;
     }
 
+    get settingsGroups() {
+        // Add the label as its own row
+        const groups = [[this.settings[0]]];
+        let i = 1;
+        while (i + 1 < this.settings.length) {
+            groups.push([this.settings[i], this.settings[i + 1]]);
+            i += 2;
+        }
+
+        // add any leftovers (e.g. color)
+        if (i < this.settings.length) {
+            groups.push([this.settings[i]]);
+        }
+
+        return groups;
+    }
+
     setVisible(visible: boolean) {
         this.mesh.visible = visible;
     }
