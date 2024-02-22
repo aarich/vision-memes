@@ -5,7 +5,7 @@ import type { Asset, ControlBehavior } from './types';
 import { clamp, degToRad } from 'three/src/math/MathUtils.js';
 
 export abstract class BaseAsset implements Asset {
-    _settings: ControlBehavior<any>[];
+    _settings: ControlBehavior<unknown>[];
     id: string;
 
     abstract label: string;

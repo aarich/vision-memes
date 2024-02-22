@@ -3,7 +3,6 @@ import {
 	Scene,
 	WebGLRenderer,
 	type Renderer,
-	LinearFilter,
 	TextureLoader
 } from 'three';
 import { UserImage } from './image';
@@ -90,7 +89,7 @@ export class View {
 	downloadImage() {
 		const imgData = this.renderer.domElement.toDataURL();
 
-		var link = document.createElement('a');
+		const link = document.createElement('a');
 
 		link.setAttribute('href', imgData);
 		link.setAttribute('target', '_blank');

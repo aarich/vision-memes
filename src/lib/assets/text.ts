@@ -8,7 +8,7 @@ export class UserText extends BaseAsset {
     _label = 'Text';
 
     static create(scene: Scene, onRerender: VoidFunction): Promise<UserText> {
-        return new Promise(async (resolve) => {
+        return new Promise((resolve) => {
             const myText = new Text();
             myText.text = 'Text';
             myText.fontSize = 0.2;

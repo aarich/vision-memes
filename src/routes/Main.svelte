@@ -9,7 +9,6 @@
 	import { onMount } from 'svelte';
 
 	let viewParent: HTMLElement;
-	let fileInput: HTMLInputElement;
 	let ctrlsGroup: HTMLDivElement;
 
 	$: view = undefined as View | undefined;

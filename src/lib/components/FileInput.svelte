@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let label: String;
+	export let label: string;
 	export let onLoadFile: (file: File) => void;
 	export let btnClass = 'btn-outline-secondary';
 

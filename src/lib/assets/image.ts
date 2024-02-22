@@ -13,11 +13,11 @@ function toDataURL(
 	callback: (result: string | ArrayBuffer | null) => void,
 	isSecondAttempt = false
 ) {
-	var xhr = new XMLHttpRequest();
+	const xhr = new XMLHttpRequest();
 	xhr.open('get', url);
 	xhr.responseType = 'blob';
 	xhr.onload = function () {
-		var fr = new FileReader();
+		const fr = new FileReader();
 		fr.onload = function () {
 			callback(this.result);
 		};

@@ -20,8 +20,8 @@ export interface Asset {
 	setPosition(oldValue: number, newValue: number, xOrY: XY): void;
 	setAngle(oldValue: number, newValue: number, xOrY: XY): void;
 	isText(): boolean,
-	settings: ControlBehavior<any>[];
-	settingsGroups: ControlBehavior<any>[][];
+	settings: ControlBehavior<unknown>[];
+	settingsGroups: ControlBehavior<unknown>[][];
 	label: string;
 	id: string;
 	mesh: Mesh;

@@ -3,7 +3,7 @@
 	import ControllerDropdown from './ControllerDropdown.svelte';
 	import ControllerSlider from './ControllerSlider.svelte';
 
-	export let onDelete: VoidFunction;
+	export let onDelete: () => void;
 	export let asset: Asset;
 
 	$: label = asset.label;
